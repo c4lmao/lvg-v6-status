@@ -1,7 +1,7 @@
 {
   "status": "on",
   "reason": "Service is operational",
-  "last_updated": "2024-01-01T00:00:00Z",
+  "last_updated": "2024-12-15T00:00:00Z",
   "version": "v6.0",
   "maintenance": false,
   "message": "DDOS V6 is online"
