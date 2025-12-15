@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Script to update GitHub status from Discord bot or command line
+"""
+
 import json
 import os
 import sys
@@ -9,9 +14,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # GitHub Configuration
-GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
-GITHUB_REPO = os.getenv('GITHUB_REPO')  # format: "username/repo"
-GITHUB_BRANCH = os.getenv('GITHUB_BRANCH', 'main')
+GITHUB_TOKEN = os.getenv('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')
+GITHUB_REPO = os.getenv('c4lmao/lvg-v6-status')  # format: "username/repo"
+GITHUB_BRANCH = os.getenv('https://github.com/c4lmao/lvg-v6-status/tree/main', 'main')
 
 # File to update
 STATUS_FILE = "status.json"
@@ -20,7 +25,7 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1449898428199862454/2F4gI-8tC70_
 def get_current_status():
     """Get current status from GitHub"""
     try:
-        url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}/{STATUS_FILE}"
+        url = f"https://raw.githubusercontent.com/c4lmao/lvg-v6-status/refs/heads/main/status.json"
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
             return response.json()
@@ -53,7 +58,7 @@ def update_status(new_status, reason="", message=""):
         current["message"] = message
     
     # Prepare API request
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{STATUS_FILE}"
+    url = f"  https://api.github.com/repos/c4lmao/lvg-v6-status/contents/status.json"
     
     # Get current file SHA (needed for update)
     headers = {
